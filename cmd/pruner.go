@@ -542,7 +542,7 @@ func pruneAppState(home string) error {
 			"icacontroller", // icacontrollertypes.StoreKey, https://github.com/cosmos/ibc-go/blob/main/modules/apps/27-interchain-accounts/controller/types/keys.go#L5
 			"icahost",  // icahosttypes.StoreKey,
 			// mainnet since v4.7.0
-			"profiles", // profilestypes.StoreKey,
+			"profiles",      // profilestypes.StoreKey,
 			"relationships", // relationshipstypes.StoreKey,
 			"subspaces",     // subspacestypes.StoreKey,
 			"posts",         // poststypes.StoreKey,
@@ -555,6 +555,25 @@ func pruneAppState(home string) error {
 		)
 
 		for key, value := range desmosKeys {
+			keys[key] = value
+		}
+	} else if app == "archway" {
+		archwayKeys := types.NewKVStoreKeys(
+			"wasm",
+			"ibc",
+			"icacontroller",
+			"icahost",
+			"feeibc",
+			"group",
+			"nft",
+			"cwica",
+			"tracking",
+			"rewards",
+			"callback",
+			"cwfees",
+			"cwerrors",
+		)
+		for key, value := range archwayKeys {
 			keys[key] = value
 		}
 	}
