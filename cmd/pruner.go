@@ -593,14 +593,14 @@ func pruneAppState(home string) error {
 			keys[key] = value
 		}
 	} else if app == "desmos" {
-	    // https://github.com/desmos-labs/desmos/blob/master/app/app.go#L388
+		// https://github.com/desmos-labs/desmos/blob/master/app/app.go#L388
 		desmosKeys := types.NewKVStoreKeys(
 			// common modules
 			"feegrant", // feegrant.StoreKey,
 			"wasm",     // wasm.StoreKey,
 			"authz",    // authzkeeper.StoreKey,
 			// mainnet since v4.7.0
-			"profiles", // profilestypes.StoreKey,
+			"profiles",      // profilestypes.StoreKey,
 			"relationships", // relationshipstypes.StoreKey,
 			"subspaces",     // subspacestypes.StoreKey,
 			"posts",         // poststypes.StoreKey,
@@ -610,6 +610,15 @@ func pruneAppState(home string) error {
 		)
 
 		for key, value := range desmosKeys {
+			keys[key] = value
+		}
+	} else if app == "archway" {
+		archwayKeys := types.NewKVStoreKeys(
+			"wasm",    // wasm.StoreKey,
+			"rewards", // rewardsTypes.StoreKey,
+		)
+
+		for key, value := range archwayKeys {
 			keys[key] = value
 		}
 	}
