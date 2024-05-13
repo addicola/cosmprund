@@ -614,18 +614,20 @@ func pruneAppState(home string) error {
 		}
 	} else if app == "archway" {
 		archwayKeys := types.NewKVStoreKeys(
-			"authz",    // authzkeeper.StoreKey,
-			"feegrant", // feegrant.StoreKey,
-			"wasm",     // wasm.StoreKey,
-			"nft",      // nfttypes.StoreKey,
-			"cwica",    // cwicatypes.StoreKey,
-			"tracking", // trackingtypes.StoreKey,
-			"rewards",  // rewardstypes.StoreKey,
-			"cwfee",    // cwfeetypes.StoreKey,
-			"cwerrors", // cwerrorstypes.StoreKey,
-
+			"wasm",
+			"ibc",
+			"icacontroller",
+			"icahost",
+			"feeibc",
+			"group",
+			"nft",
+			"cwica",
+			"tracking",
+			"rewards",
+			"callback",
+			"cwfees",
+			"cwerrors",
 		)
-
 		for key, value := range archwayKeys {
 			keys[key] = value
 		}
